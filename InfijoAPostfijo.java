@@ -27,7 +27,7 @@ public class InfijoAPostfijo {
         //método un convierte una cadena de infija a postfija.
         ArrayList<Character> resultado=new ArrayList();
         PilaADT<Character> elementos=new PilaA<>();
-        int i=0;
+        int i=0, j=0;
         while(i<infija.length()){
             elementos.push(infija.charAt(i));
             if(determinarOperador(infija.charAt(i))){
@@ -44,8 +44,10 @@ public class InfijoAPostfijo {
             }
             i++;
         }
-        while(!elementos.isEmpty())
+        while(!elementos.isEmpty()){
             resultado.add(infija.charAt(i));
+            j++;
+        }
         
         return resultado;
     }
