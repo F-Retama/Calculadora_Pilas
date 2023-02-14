@@ -45,7 +45,7 @@ public class InfijoAPostfijo {
             i++;
         }
         while(!elementos.isEmpty()){
-            resultado.add(infija.charAt(i));
+            resultado.add(infija.charAt(j));
             j++;
         }
         
