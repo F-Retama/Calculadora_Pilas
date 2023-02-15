@@ -23,17 +23,17 @@ public class Segmentar {
         int i=0;
         while (i<cadena.length()){
             item = cadena.charAt(i);
-            if (esDigito(item) || item=='-' && temp.equals(""))
+            if (esDigito(item) || item=='-' && temp.isEmpty())
                 temp += item;   
             else{
-                if (!temp.equals(""))
+                if (!temp.isBlank())
                     resultado.add(temp);
                 resultado.add(""+item);
                 temp = "";
             }
             i++;
         }
-        if (!temp.equals(""))
+        if (!temp.isEmpty())
             resultado.add(temp);
         return resultado;
     }
