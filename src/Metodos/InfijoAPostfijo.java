@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Proyecto;
+package Metodos;
 import Pilas.*;
 import java.util.ArrayList;
 
@@ -62,13 +62,12 @@ public class InfijoAPostfijo {
         return resp;
     }
     public static <T> ArrayList<String> APostfijo (String cadena){
-        ArrayList<String> postfija=new ArrayList<String>();
-        PilaA<String> pila1=new PilaA<String>();
+        ArrayList<String> postfija=new ArrayList<>();
+        PilaA<String> pila1=new PilaA<>();
         String simbolo;
         int i=0;
-        boolean sePuede;
         //antes de comenzar se debe de analizar si no hay errores en parentesis.
-        sePuede=analizaCadena2(cadena);
+        RevisorParentesis.analizaCadena(cadena);
         
         while(i<cadena.length()&& !cadena.equals(" ")){//checar esta condicion
             simbolo=cadena.substring(i, i+1);
