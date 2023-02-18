@@ -66,8 +66,6 @@ public class InfijoAPostfijo {
         PilaA<String> pila1=new PilaA<>();
         String simbolo;
         int i=0;
-        //antes de comenzar se debe de analizar si no hay errores en parentesis.
-        RevisorParentesis.analizaCadena(cadena);
         
         while(i<cadena.length()&& !cadena.equals(" ")){//checar esta condicion
             simbolo=cadena.substring(i, i+1);
