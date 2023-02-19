@@ -11,7 +11,7 @@ import Pilas.*;
  * @author Alexa
  */
 
-OYEEE, QUÉ VAS A HACER SI LA CADENA EMPIEZA CON '-' ???
+OYEEE, QUÉ VAS A HACER SI LA CADENA EMPIEZA CON '-(' ???
 
 public class InfijoAPostfijo {
     //atributos
