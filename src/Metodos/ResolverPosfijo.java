@@ -35,59 +35,54 @@ public class ResolverPosfijo {
         String resp = "";
         if (exp != null && !exp.isEmpty()) {
             int i = 0;
-            PilaA<Double> pila1 = new PilaA<>();
+            PilaA<Double> pila = new PilaA<>();
             String aux;
-            double a, b, result = 0;
+            double a,b;
             while (i < exp.size()) {
                 aux = exp.get(i);
-                if (!aux.equals("+") && !aux.equals("-") && !aux.equals("/") && !aux.equals("*") && !aux.equals("^")) {
-                    pila1.push(Double.valueOf(aux));
-                    i++;
-
-                } else {
+                if (!aux.equals("+") && !aux.equals("-") && !aux.equals("/") && !aux.equals("*") && !aux.equals("^"))
+                    pila.push(Double.valueOf(aux));
+                else{
                     //Se asume que en la expresión ya es válida, se validó anteriorimente (siempre hay dos números para operar)
-                    b = pila1.pop();
-                    a = pila1.pop();
+                    b = pila.pop();
+                    a = pila.pop();
                     //Dependiendo del signo se realiza una operación determinada
                     switch (aux) {
-                        case "+" -> result = a + b;
-                        case "-" -> result = (a - b);
+                        case "+" -> pila.push(a + b);
+                        case "-" -> pila.push(a - b);
                         case "/" -> {
                             // checar que no divida en 0
                             if (b != 0)
-                                result = (a / b);
+                                pila.push(a / b);
                             else 
                                 throw new RuntimeException("No se puede dividir entre 0");
                         }
-                        case "*" -> result = (b * a);
-                        case "^" -> result = Math.pow(a, b);
-                        default -> {
-                        }
+                        case "*" -> pila.push(b * a);
+                        case "^" -> pila.push( Math.pow(a, b));
                     }
-                    pila1.push(result);
-                    i++;
                 }
+                i++;
             }
-            resp = String.valueOf(pila1.pop());
+            resp = String.valueOf(pila.pop());
         }
         return resp;
-
     }
 
     public static void main(String[] args) {
         ArrayList<String> p1 = new ArrayList<>();
+        System.out.println(evaluaPost(p1));
+        
         p1.add("5");
         p1.add("6");
         p1.add("1");
-        p1.add("3");
+        p1.add("-3");
         p1.add("+");
         p1.add("2");
         p1.add("^");
         p1.add("*");
-        p1.add("2");
+        p1.add("2.5");
         p1.add("/");
         p1.add("+");
-
         System.out.println(evaluaPost(p1));
     }
 }
