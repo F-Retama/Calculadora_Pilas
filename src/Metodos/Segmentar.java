@@ -41,7 +41,7 @@ public class Segmentar {
         
         System.out.println(segmenta("-32.7+34.58-(24*(234))/531").toString());
         System.out.println(segmenta("32+(34-24*-234/-531)").toString());
-        System.out.println(segmenta("(32+34-24.89)*234/531").toString());
+        System.out.println(segmenta("-(32+34-24.89)*234/531").toString());
         
     }
     

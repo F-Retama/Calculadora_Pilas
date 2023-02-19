@@ -10,6 +10,9 @@ import Pilas.*;
  *
  * @author Alexa
  */
+
+OYEEE, QUÉ VAS A HACER SI LA CADENA EMPIEZA CON '-' ???
+
 public class InfijoAPostfijo {
     //atributos
     private String cadena;
