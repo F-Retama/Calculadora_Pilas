@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * @author Diego Román
 */
-public class Convertidor {
+public class ResolverPosfijo {
     
     /**
      *"EvaluaPost": Evalua la expresión en postfija
@@ -34,15 +34,14 @@ public class Convertidor {
     public static String evaluaPost(ArrayList<String> exp) {
         String resp = "";
         if (exp != null && !exp.isEmpty()) {
-            int i = 0, cuantos;
-            cuantos = exp.size();
+            int i = 0;
             PilaA<Double> pila1 = new PilaA<>();
             String aux;
             double a, b, result = 0;
-            while (i < cuantos) {
+            while (i < exp.size()) {
                 aux = exp.get(i);
                 if (!aux.equals("+") && !aux.equals("-") && !aux.equals("/") && !aux.equals("*") && !aux.equals("^")) {
-                    pila1.push(Double.parseDouble(aux));
+                    pila1.push(Double.valueOf(aux));
                     i++;
 
                 } else {
@@ -50,20 +49,20 @@ public class Convertidor {
                     b = pila1.pop();
                     a = pila1.pop();
                     //Dependiendo del signo se realiza una operación determinada
-                    if (aux.equals("+")) {
-                        result = a + b;
-                    } else if (aux.equals("-")) {
-                        result = (a - b);
-                    } else if (aux.equals("/")) {// checar que no divida en 0
-                        if (b != 0) {
-                            result = (a / b);
-                        } else {
-                            throw new RuntimeException("No se puede dividir entre 0");
+                    switch (aux) {
+                        case "+" -> result = a + b;
+                        case "-" -> result = (a - b);
+                        case "/" -> {
+                            // checar que no divida en 0
+                            if (b != 0)
+                                result = (a / b);
+                            else 
+                                throw new RuntimeException("No se puede dividir entre 0");
                         }
-                    } else if (aux.equals("*")) {
-                        result = (b * a);
-                    } else if (aux.equals("^")) {
-                        result = Math.pow(a, b);
+                        case "*" -> result = (b * a);
+                        case "^" -> result = Math.pow(a, b);
+                        default -> {
+                        }
                     }
                     pila1.push(result);
                     i++;
@@ -76,7 +75,7 @@ public class Convertidor {
     }
 
     public static void main(String[] args) {
-        ArrayList<String> p1 = new ArrayList<String>();
+        ArrayList<String> p1 = new ArrayList<>();
         p1.add("5");
         p1.add("6");
         p1.add("1");
