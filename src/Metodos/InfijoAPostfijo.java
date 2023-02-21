@@ -21,15 +21,15 @@ public class InfijoAPostfijo {
         int i=1, j=0;
             elementos.push(cadenaSegmentada.get(0));
         while(i<cadenaSegmentada.size()){
-            if(determinarOperador(cadenaSegmentada.get(i).charAt(i))){
-                while(!elementos.isEmpty() && determinarPrioridad(cadenaSegmentada.get(i).charAt(i)) <= Integer.parseInt(elementos.peek()))
+            if(determinarOperador(cadenaSegmentada.get(i))){
+                while(!elementos.isEmpty() && determinarPrioridad(cadenaSegmentada.get(i)) <= Integer.parseInt(elementos.peek()))
                     resultado.add(elementos.pop());
                 elementos.push(cadenaSegmentada.get(i));
             } else {
             }
-            if(cadenaSegmentada.get(i).charAt(i) == '(')
+            if(cadenaSegmentada.get(i) == "(")
                 elementos.push(cadenaSegmentada.get(i));
-            if(infija.charAt(i) == ')'){
+            if(cadenaSegmentada.get(i) == ")"){
                 while(!"(".equals(elementos.peek()))
                     resultado.add(elementos.pop());
                 elementos.pop();
@@ -44,22 +44,22 @@ public class InfijoAPostfijo {
         return resultado;
     }
     
-    public static int determinarPrioridad(char operador){
+    public static int determinarPrioridad(String operador){
         //método que determina la prioridad de los operadores.
         int resp=-1;
         switch(operador){
-            case '^' -> resp=1;
-            case '*' -> resp=2;
-            case '/' -> resp=2;
-            case '+' -> resp=3;
-            case '-' -> resp=3;
+            case "^" -> resp=1;
+            case "*" -> resp=2;
+            case "/" -> resp=2;
+            case "+" -> resp=3;
+            case "-" -> resp=3;
         }
         return resp;
     }
-    public static boolean determinarOperador(char operador){
+    public static boolean determinarOperador(String operador){
         //método que determina si es un operador.
         boolean resp=false;
-        if(operador == '+' || operador == '-' || operador == '*' || operador == '/' || operador == '^')
+        if(operador == "+" || operador == "-" || operador == "*" || operador == "/" || operador == "^")
             resp=true;
         return resp;
     }
