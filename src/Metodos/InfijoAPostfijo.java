@@ -27,9 +27,9 @@ public class InfijoAPostfijo {
                 elementos.push(cadenaSegmentada.get(i));
             } else {
             }
-            if(cadenaSegmentada.get(i) == "(")
+            if("(".equals(cadenaSegmentada.get(i)))
                 elementos.push(cadenaSegmentada.get(i));
-            if(cadenaSegmentada.get(i) == ")"){
+            if(")".equals(cadenaSegmentada.get(i))){
                 while(!"(".equals(elementos.peek()))
                     resultado.add(elementos.pop());
                 elementos.pop();
