@@ -13,7 +13,7 @@ public class Metodos {//métodos estáticos
     
     /**
      * método que determina si un caracter es parte de un operando
-     * @author Retama
+     * @author Fenando Retama
      * @param car (caracter)
      * @return boolean 
      */
@@ -51,8 +51,8 @@ public class Metodos {//métodos estáticos
         return resultado;
     }
     /**
-     * falta aprovechar el "esOperador" para el "validaString"
-     * @author Retama
+     * método que valida si una expreión infija está bien escrita
+     * @author Fernando Retama, Sofía Imelda
      * @param elementos del String de entrada ya segmentado
      * @return boolean
      */ 
