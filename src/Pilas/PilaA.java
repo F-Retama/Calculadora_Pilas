@@ -59,46 +59,6 @@ public class PilaA <T> implements PilaADT<T>{
             sb.append("\n").append(pila[i]);
         return sb.toString();
     }
-    
-    @Override
-    public void multiPop (int n){
-        if (n <= tope+1)
-            for (int i=0; i<n; i++){
-                pila[tope] = null;
-                tope --;
-            }
-    }
-    
-    @Override
-    public boolean equals (Object obj){ //basado en los elementos contenidos
-        boolean resp = true;
-        if (obj != null && obj instanceof PilaADT){
-            PilaADT <T> aux1 = new PilaA();
-            PilaADT <T> aux2 = new PilaA();
-            while(resp && !((PilaADT)obj).isEmpty() && !this.isEmpty()){
-                if (this.peek() != ((PilaADT)obj).peek())
-                    resp = false;
-                try{
-                    aux2.push((T) ((PilaADT)obj).pop());
-                    aux1.push(this.pop());
-                } catch (Exception e){
-                }
-            }
-            if(!((PilaADT)obj).isEmpty() || !this.isEmpty())
-                resp = false;
-            while (!aux2.isEmpty()){
-                try{
-                    ((PilaADT)obj).push(aux2.pop());
-                    this.push(aux1.pop());
-                }catch (Exception e){
-                }
-            }
-        }
-        else
-            resp = false;
-        return resp;
-    }
-    
     public static void main(String[] args) {
         PilaADT pila1 = new PilaA();
         for(int i=0; i<5; i++)
