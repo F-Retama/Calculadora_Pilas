@@ -229,6 +229,12 @@ public class Metodos {//métodos estáticos
         return resp;
     }
     
+    /**
+     * Realiza toda la operación de la calculadora
+     * @author Fernando Retama
+     * @param cadena
+     * @return resultado o mensaje de error
+     */
     public static String calculadora (String cadena){
         String resp;
         ArrayList<String> elementos = Metodos.segmenta(cadena);
