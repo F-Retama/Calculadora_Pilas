@@ -399,13 +399,9 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnResolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResolverActionPerformed
-        ArrayList<String> elementos = Metodos.segmenta(display.getText());
-        if (Metodos.validaString(elementos)){
-            ArrayList<String> posfijo = Metodos.convertirPostfijo(elementos);
-            display.setText(Metodos.evaluaPost(posfijo));
-        }
-        else
-            display.setText("Expresión inválida");
+        String cadena = display.getText();
+        if (!cadena.isEmpty())
+            display.setText(Metodos.calculadora(cadena));
     }//GEN-LAST:event_btnResolverActionPerformed
 
     /**
