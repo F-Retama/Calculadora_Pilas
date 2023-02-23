@@ -106,7 +106,6 @@ public class Metodos {//métodos estáticos
         return resp && pilaNums.isEmpty() && pilaParen.isEmpty();
     }
     
-    
     /**
      * método que determina la prioridad de los operadores.
      * @author Alexa
@@ -129,7 +128,7 @@ public class Metodos {//métodos estáticos
      * método que convierte una cadena de infija a postfija.
      * @author Alexa
      * @param infijo váido en ArrayList segmentado
-     * @return entero que represesnta la prioridad de los operadores
+     * @return ArrayList de la expreión en posfijo
      */
     public static ArrayList<String> convertirPostfijo(ArrayList<String> infijo){
         ArrayList<String> resultado = new ArrayList();
@@ -217,7 +216,7 @@ public class Metodos {//métodos estáticos
                             if (b != 0)
                                 pila.push(a / b);
                             else 
-                                throw new RuntimeException("No se puede dividir entre 0");
+                                return "No se puede dividir entre 0";
                         }
                         case "*" -> pila.push(b * a);
                         case "^" -> pila.push( Math.pow(a, b));
