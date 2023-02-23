@@ -106,7 +106,6 @@ public class Metodos {//métodos estáticos
         return resp && pilaNums.isEmpty() && pilaParen.isEmpty();
     }
     
-    
     /**
      * método que determina la prioridad de los operadores.
      * @author Alexa
