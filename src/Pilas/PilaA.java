@@ -59,6 +59,15 @@ public class PilaA <T> implements PilaADT<T>{
             sb.append("\n").append(pila[i]);
         return sb.toString();
     }
+    @Override
+    public void multiPop (int n){
+        if (n <= tope+1)
+            for (int i=0; i<n; i++){
+                pila[tope] = null;
+                tope --;
+            }
+    }
+    
     public static void main(String[] args) {
         PilaADT pila1 = new PilaA();
         for(int i=0; i<5; i++)
