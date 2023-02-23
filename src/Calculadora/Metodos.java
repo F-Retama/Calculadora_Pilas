@@ -173,7 +173,7 @@ public class Metodos {//métodos estáticos
     }
     
     /**
-     *"EvaluaPost": Resuelve la expresión en postfija
+     * Resuelve la expresión en postfija
      * @author Diego Román
      * @param exp
      * @return el resultado de las operaciones resultantes.
@@ -192,7 +192,7 @@ public class Metodos {//métodos estáticos
         * -Se calcula el resultado y se agrega nuevamente en la pila.
         * -Si ya se recorrió todo el ArrayList, todas las operaciones correspondientes se realizaron y se devuelve el resultado final (resp).
      */
-    public static String evaluaPost(ArrayList<String> exp) {
+    public static String resuelvePost(ArrayList<String> exp) {
         String resp = "";
         if (exp != null && !exp.isEmpty()) {
             int i = 0;
@@ -228,33 +228,31 @@ public class Metodos {//métodos estáticos
         }
         return resp;
     }
+    
+    public static String calculadora (String cadena){
+        String resp;
+        ArrayList<String> elementos = Metodos.segmenta(cadena);
+        if (Metodos.validaString(elementos)){
+            ArrayList<String> posfijo = Metodos.convertirPostfijo(elementos);
+            resp = resuelvePost(posfijo);
+        }
+        else
+            resp = "Expresión inválida";
+        return resp;
+    }
 
     public static void main(String[] args) {
         
-//        System.out.println(validaString("-1+212*(-8/-94.56+-9)"));
-//        System.out.println(validaString("9*-9"));
-//        System.out.println(validaString("(-.9*9)"));
-//        System.out.println(validaString("-9(*-9)"));
-//        System.out.println(validaString(""));
-//        System.out.println(validaString("(()())"));
-//        System.out.println(validaString("((5)(9))"));
-        
-//        System.out.println(convertirPostfijo("2+3*4"));
-//        System.out.println(convertirPostfijo("2+3+4+5+6"));
-//        System.out.println(convertirPostfijo("2*3/4*5/6"));
-//        System.out.println(convertirPostfijo("2+3+4*5+6"));
-//        System.out.println(convertirPostfijo("2+3*4+5"));
-//        System.out.println(convertirPostfijo("((9)+((-9)))"));
-//        System.out.println(convertirPostfijo("(-.9*9)"));
-//        System.out.println(convertirPostfijo("-1+212*(-8/-94.56+-9)"));
-//        System.out.println(convertirPostfijo("-(1+212)*(-8/-94.56+-9)"));
-//        System.out.println(convertirPostfijo("-(1+212)+(-8/-94.56+-9)"));
-        
-        ArrayList<String> a1 = segmenta("-(1+212)*(-8/-94.56+-9)");
-        System.out.println(validaString(a1));
-        ArrayList<String> ap1 = convertirPostfijo(a1);
-        System.out.println(ap1.toString());
-        System.out.println(evaluaPost(ap1));
+        System.out.println(calculadora(""));
+        System.out.println(calculadora("2+3*4"));
+        System.out.println(calculadora("2+3+4+5+6"));
+        System.out.println(calculadora("2+3+4*5+6"));
+        System.out.println(calculadora("2*3/4*5/6"));
+        System.out.println(calculadora("((9)+((-9)))"));
+        System.out.println(calculadora("(-.9*9)"));
+        System.out.println(calculadora("2+3/(5-2.5*2)"));
+        System.out.println(calculadora("-1+212*(-8/-94.56+-9)"));
+        System.out.println(calculadora("-(1+212)*(-8/-94.56+-9)"));
         
     }
 }
